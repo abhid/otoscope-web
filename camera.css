@@ -1,3 +1,9 @@
 #capture-list #canvas {
     margin: 10px;
 }
+
+#capture-list .dl-img {
+    position: relative;
+    bottom: 50px;
+    left: 15px;
+}
