@@ -1,7 +1,7 @@
 $(document).ready(function() {
     'use strict';
     const liveview = $('#scope-liveview')[0];
-    const canvas = document.getElementById('canvas');
+    const capturelist = $('#capture-list');
     const snap = document.getElementById("snap");
     const errorMsgElement = document.querySelector('span#errorMsg');
 
@@ -31,9 +31,11 @@ $(document).ready(function() {
     // Load init
     init();
 
-    // Draw image
-    var context = canvas.getContext('2d');
+    // Save image
     snap.addEventListener("click", function () {
-        context.drawImage(liveview, 0, 0, 640, 480);
+        let canvas = $('<canvas id="canvas" width="320" height="240"></canvas>')
+        var context = canvas[0].getContext('2d');
+        context.drawImage(liveview, 0, 0, 320, 240);
+        capturelist.append(canvas[0]);
     });
 });
