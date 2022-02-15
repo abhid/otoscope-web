@@ -25,25 +25,26 @@
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-6">
-                <div class="video-wrap">
-                    <video id="scope-liveview" class="col-12" playsinline autoplay></video>
+                <div class="col-12">
+                    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="right"
+                        data-bs-trigger="hover focus" data-bs-content="Login to start remote telx sessions">
+                        <button class="btn btn-secondary btn-sm" disabled>Start a telx
+                            session</button>
+                    </span>
                 </div>
-                <div class="controller pt-4 row">
-                    <div class="col-8">
-                        <select id="scope-select" class="form-select form-select-sm">
-                        </select>
+                <div class="col-12 mt-2">
+                    <div class="video-wrap">
+                        <video id="scope-liveview" class="col-12" playsinline autoplay></video>
                     </div>
-                    <div class="col-4">
-                        <button id="scope-capture" class="btn btn-primary btn-sm">Capture Image</button>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-4">
-                        <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="right"
-                            data-bs-trigger="hover focus" data-bs-content="Login to start remote telx sessions.">
-                            <button class="btn btn-secondary btn-sm" disabled>Start a telx
-                                session</button>
-                        </span>
+                    <div class="controller pt-4 row d-flex justify-content-between">
+                        <div class="col-4">
+                            <select id="scope-select" class="form-select form-select-sm">
+                            </select>
+                        </div>
+
+                        <div class="col-4 text-end">
+                            <button id="scope-capture" class="btn btn-primary btn-sm">Capture Image</button>
+                        </div>
                     </div>
                 </div>
             </div>
