@@ -1,2 +1,4 @@
 # telx-capture
-Webview and image download for digital otoscope
+Imaging viewer and local capture.
+
+Compatible with Otoscopes that present themselves as UVC cameras.
