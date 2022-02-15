@@ -10,14 +10,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap" rel="stylesheet">
     <link href="/camera.css" rel="stylesheet">
     <title>Digital Otoscope viewer</title>
 </head>
 
 <body style="background-color: #eaeaea;">
-    <div class="container mt-4">
+    <div class="sticky-top bg-light h1 ps-4" style="line-height: 75px;">
+        <p style="display: inline;" class="wordmark">telx</p>
+        <p style="display: inline;"> &middot; capture
+    </div>
+    <div class="container-fluid mt-4">
         <div class="row">
-            <div class="col-5">
+            <div class="col-6">
                 <div class="video-wrap">
                     <video id="scope-liveview" class="col-12" playsinline autoplay></video>
                 </div>
@@ -27,13 +34,25 @@
                         </select>
                     </div>
                     <div class="col-4">
-                        <button id="scope-capture" class="btn btn-primary btn-sm">Capture</button>
+                        <button id="scope-capture" class="btn btn-primary btn-sm">Capture Image</button>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-4">
+                        <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="right"
+                            data-bs-trigger="hover focus" data-bs-content="Login to start remote telx sessions.">
+                            <button class="btn btn-secondary btn-sm" disabled>Start a telx
+                                session</button>
+                        </span>
                     </div>
                 </div>
             </div>
-            <div class="col-7">
+            <div class="col-6">
                 <div id="capture-list" class="row">
-
+                    <div class="d-flex justify-content-between">
+                        <span class="h4">Captured Images</span>
+                        <button id="capture-clear" class="btn btn-primary btn-sm">Clear images</button>
+                    </div>
                 </div>
             </div>
         </div>

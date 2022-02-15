@@ -57,13 +57,28 @@ $(document).ready(function () {
         liveview.srcObject = currentStream;
     }
 
+    function downloadCanvas(canvas) {
+        // get canvas data
+        var image = canvas.toDataURL();
+    
+        // create temporary link
+        var tmpLink = document.createElement('a');
+        tmpLink.download = new Date("2015-03-25").toISOString().split("T")[0] + '-scope-' + $("canvas").toArray().indexOf(canvas) +  '.jpg';
+        tmpLink.href = image;
+    
+        // temporarily add link to body and initiate the download
+        document.body.appendChild(tmpLink);
+        tmpLink.click();
+        document.body.removeChild(tmpLink);
+    }
+
     // Evt listensers
     // Save image
     captureBtn.on("click", function () {
         let canvas = $('<canvas id="canvas" width="320" height="240"></canvas>')
         var context = canvas[0].getContext('2d');
         context.drawImage(liveview, 0, 0, 320, 240);
-        let dom_obj = $("<div class='col-6'>").html(canvas).append('<button class="dl-img btn btn-light btn-sm"><i class="fa-solid fa-download"></i></button>');
+        let dom_obj = $("<div class='col-6 captures'>").html(canvas).append('<br /><button class="dl-img btn btn-light btn-sm"><i class="fa-solid fa-download"></i></button>');
         capturelist.append(dom_obj);
     });
 
@@ -90,22 +105,14 @@ $(document).ready(function () {
             let curCanvas = $($(evt.target).parents(".col-6")[0]).children("canvas")[0];
             downloadCanvas(curCanvas);
         }
-    })
+    });
+
+    $("#capture-clear").on('click', evt => {
+        capturelist.children(".captures").remove();
+    });
 
     init();
+
+    // Enable popovers
+    new bootstrap.Popover($('[data-bs-toggle="popover"]'))
 });
-
-function downloadCanvas(canvas) {
-    // get canvas data
-    var image = canvas.toDataURL();
-
-    // create temporary link
-    var tmpLink = document.createElement('a');
-    tmpLink.download = new Date("2015-03-25").toISOString().split("T")[0] + '-scope-' + $("canvas").toArray().indexOf(canvas) +  '.jpg';
-    tmpLink.href = image;
-
-    // temporarily add link to body and initiate the download
-    document.body.appendChild(tmpLink);
-    tmpLink.click();
-    document.body.removeChild(tmpLink);
-}
